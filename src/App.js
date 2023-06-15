@@ -1,30 +1,34 @@
+// Clone of list 
+// let newlist = [...list]; 
 
+
+const { useState } = require("react");
 
 function App() {
-  return (
+  return(
     <>
-      <h1></h1>
+      <h1>Stateful List</h1>
       <ListDemo/>
     </>
   );
 }
 
 function ListDemo() {
-  let data = "List in react";
-  let list = ["react", "HTML", "CSS"];
+  let[list, setList] = useState(["WPT Module"]);
+  let newElement = [...list];
+  let addItem =()=>{
+    let newList = [...list, "React", "HTML", "CSS"];
+    // list.push("CDAC");
+    setList(newList);
 
-  return (
+  }
+  return(
     <>
-     <h1>{data}</h1>
-     {list.map((item) => item)} {/* reactHTMLCSS */}
-     
-     <hr />
-     {list.map((item) => "Hello" + item)} {/*HelloreactHelloHTMLHelloCSS*/}
-     <hr />
-     {list.map((item) => (<><p>Hello {list[0]}</p></>))}
-     <hr />
+    <h2>{list.map((item)=> item+" ")}</h2>
+     <input type="button" value="Add" onClick={addItem} /> 
+     <h2>{list.map((item)=> item+" ")}</h2>
     </>
   );
-} 
+}
 
 export default App;
