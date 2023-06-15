@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 
 function App() {
-  return ( 
+  return (
     <>
       <h1>Use of Ref Hook</h1>
-      <ListDemo/>
+      <ListDemo />
     </>
   );
 }
@@ -14,22 +14,44 @@ function ListDemo() {
   let [list, setList] = useState(["WPT Module"]);
 
   let addItemAction = () => {
-    let inputValue = inputRef.current.value;
-    let newList = [inputValue, ...list];
+    let inputValue = inputRef.current.value; //value from input text
+    let newList = [inputValue, ...list]; //Adding input value to the existing Value
 
     setList(newList);
 
-    inputRef.current.value ="";
+    inputRef.current.value = "";
   };
 
   return (
     <>
-     <input type="button" value="Add New Item" onClick="addItemAction()"/>
-     {list.map((item) => (
-        <h1>{item}</h1>
-      ))}
+      <input
+        type="text"
+        id="id1"
+        ref={inputRef}
+        placeholder="Enter user input..."
+      />
+      <input type="button" value="Add New Item" onClick={addItemAction} />
+      {list.map((item) => (<MessageDemo message={item}/>))}
     </>
-  )
+  );
+}
+
+function MessageDemo({ message }) {
+  return (
+    <>
+      <h1>Hello {message}</h1>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus,
+        dolorem quas sequi tenetur quo odit cupiditate assumenda voluptas
+        quibusdam blanditiis voluptatem quis mollitia eaque molestiae animi,
+        provident eligendi facilis incidunt.
+      </p>
+      <div>
+        <input type="button" value="&#128077;" />
+        <input type="button" value="&#128078;" />
+      </div>
+    </>
+  );
 }
 
 export default App;
