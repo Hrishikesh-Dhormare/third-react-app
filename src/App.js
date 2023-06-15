@@ -5,15 +5,17 @@ function App() {
     <>
       <h1></h1>
       <MessageDemo name="Hrishi" surname="Dhormare"/>
-      <MessageDemo name="Dhormare"/> 
+      <MessageDemo name="Dhormare"/>
+      <MessageDemo surname="Surname"/>
+
     </>
   );
 }
 
-function MessageDemo(props) {
+function MessageDemo({name ,surname}) {
   return (
     <>
-     <h1>Hello {props.name} {props.surname}</h1>
+     <h1>Hello {name} {surname}</h1>
     </>
   );
 } 
