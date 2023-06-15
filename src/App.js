@@ -1,34 +1,35 @@
-// Clone of list 
-// let newlist = [...list]; 
-
-
-const { useState } = require("react");
+import { useRef, useState } from "react";
 
 function App() {
-  return(
+  return ( 
     <>
-      <h1>Stateful List</h1>
+      <h1>Use of Ref Hook</h1>
       <ListDemo/>
     </>
   );
 }
 
 function ListDemo() {
-  let[list, setList] = useState(["WPT Module"]);
-  let newElement = [...list];
-  let addItem =()=>{
-    let newList = [...list, "React", "HTML", "CSS"];
-    // list.push("CDAC");
+  let inputRef = useRef();
+  let [list, setList] = useState(["WPT Module"]);
+
+  let addItemAction = () => {
+    let inputValue = inputRef.current.value;
+    let newList = [inputValue, ...list];
+
     setList(newList);
 
-  }
-  return(
+    inputRef.current.value ="";
+  };
+
+  return (
     <>
-    <h2>{list.map((item)=> item+" ")}</h2>
-     <input type="button" value="Add" onClick={addItem} /> 
-     <h2>{list.map((item)=> item+" ")}</h2>
+     <input type="button" value="Add New Item" onClick="addItemAction()"/>
+     {list.map((item) => (
+        <h1>{item}</h1>
+      ))}
     </>
-  );
+  )
 }
 
 export default App;
