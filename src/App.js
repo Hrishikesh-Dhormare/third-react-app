@@ -4,18 +4,25 @@ function App() {
   return (
     <>
       <h1></h1>
-      <MessageDemo name="Hrishi" surname="Dhormare"/>
-      <MessageDemo name="Dhormare"/>
-      <MessageDemo surname="Surname"/>
-
+      <ListDemo/>
     </>
   );
 }
 
-function MessageDemo({name ,surname}) {
+function ListDemo() {
+  let data = "List in react";
+  let list = ["react", "HTML", "CSS"];
+
   return (
     <>
-     <h1>Hello {name} {surname}</h1>
+     <h1>{data}</h1>
+     {list.map((item) => item)} {/* reactHTMLCSS */}
+     
+     <hr />
+     {list.map((item) => "Hello" + item)} {/*HelloreactHelloHTMLHelloCSS*/}
+     <hr />
+     {list.map((item) => (<><p>Hello {list[0]}</p></>))}
+     <hr />
     </>
   );
 } 
